@@ -1,78 +1,289 @@
+/* ------------------------------------------------------------------
+   Container
+------------------------------------------------------------------ */
 .registration-container {
   max-width: 1000px;
   margin: 40px auto;
-  padding: 20px;
+  padding: 24px;
   font-family: 'Segoe UI', sans-serif;
+  background: #fafbfc;
+  border-radius: 14px;
+  box-shadow: 0 6px 32px rgba(50,50,93,0.07), 0 1.5px 3px rgba(0,0,0,0.03);
 }
 
+/* ------------------------------------------------------------------
+   Headings
+------------------------------------------------------------------ */
 h1 {
   text-align: center;
-  color: #222;
-  margin-bottom: 30px;
+  color: #232323;
+  margin-bottom: 38px;
+  font-size: 2rem;
+  border-bottom: 2px solid #ececec;
+  padding-bottom: 13px;
+  letter-spacing: 1px;
 }
 
+.status-message {
+  text-align: center;
+  font-size: 1rem;
+  margin-bottom: 20px;
+  font-weight: 600;
+  color: #333;
+}
+
+/* ------------------------------------------------------------------
+   Form boxes
+------------------------------------------------------------------ */
 .form-box {
   background-color: #f9f9f9;
-  padding: 25px;
+  padding: 30px 22px;
   border-radius: 12px;
-  margin-bottom: 30px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 34px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
 }
 
 .form-box h2 {
-  margin-bottom: 20px;
-  color: #333;
-  font-size: 20px;
+  margin-bottom: 22px;
+  color: #2c2c2c;
+  font-size: 22px;
 }
 
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+  color: #333;
+  font-size: 15px;
+}
+
+/* ------------------------------------------------------------------
+   Inputs & selects
+------------------------------------------------------------------ */
 .form-box input,
 .form-box select {
   width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
+  padding: 11px 12px;
+  margin-bottom: 17px;
   border-radius: 8px;
-  border: 1px solid #ccc;
-  font-size: 15px;
-  background-color: white;
-  color: #000;
+  border: 1.2px solid #ccc;
+  font-size: 15.5px;
+  background-color: #fff;
+  color: #222;
+  outline: none;
+  transition: border 0.23s;
 }
 
+.form-box input:focus,
+.form-box select:focus {
+  border-color: #5ab9ea;
+  box-shadow: 0 0 0 2px #5ab9ea22;
+}
+
+/* ------------------------------------------------------------------
+   Section titles
+------------------------------------------------------------------ */
+.form-section-title {
+  font-size: 16.5px;
+  font-weight: 600;
+  margin: 18px 0 6px 0;
+  color: #4f4f4f;
+  letter-spacing: 0.5px;
+}
+
+/* ------------------------------------------------------------------
+   Main action buttons (full width)
+------------------------------------------------------------------ */
 .submit-btn,
 .delete-btn {
   width: 100%;
-  padding: 12px;
+  padding: 13px;
   border: none;
   border-radius: 8px;
-  font-size: 16px;
+  font-size: 17px;
+  font-weight: bold;
   cursor: pointer;
-  transition: 0.3s ease;
+  transition: 0.23s;
+  margin-top: 9px;
 }
 
 .submit-btn {
-  background-color: #28a745;
+  background: linear-gradient(90deg, #43c6ac, #191654 80%);
   color: white;
+  letter-spacing: 1px;
 }
-
 .submit-btn:hover {
-  background-color: #218838;
+  background: linear-gradient(90deg,#191654,#43c6ac 80%);
+  opacity: 0.96;
 }
 
 .delete-btn {
-  background-color: #dc3545;
+  background: linear-gradient(90deg,#dc3545 60%,#8e0e00 100%);
   color: white;
+  letter-spacing: 1px;
 }
-
 .delete-btn:hover {
-  background-color: #c82333;
+  background: linear-gradient(90deg,#8e0e00,#dc3545 80%);
+  opacity: 0.92;
 }
 
+/* ------------------------------------------------------------------
+   Update / Delete section layout
+------------------------------------------------------------------ */
 .update-delete-section {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 24px;
+  justify-content: space-between;
 }
 
 .half-box {
+  flex: 1 1 310px;
+  min-width: 290px;
+  background: #f7f7fa;
+  margin-bottom: 0;
+}
+
+/* ------------------------------------------------------------------
+   SEARCH BAR (shared for update & delete)
+------------------------------------------------------------------ */
+.search-bar {
+  display: flex;
+  align-items: stretch;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.search-bar input {
   flex: 1;
-  min-width: 300px;
+  padding: 11px 12px;
+  border-radius: 8px;
+  border: 1.2px solid #ccc;
+  font-size: 15.5px;
+  margin-bottom: 0; /* override default form-box spacing */
+  background-color: #fff;
+  color: #222;
+}
+
+.search-bar input:focus {
+  border-color: #5ab9ea;
+  box-shadow: 0 0 0 2px #5ab9ea22;
+}
+
+/* Narrow search button; if using .submit-btn or .search-btn */
+.search-bar .submit-btn,
+.search-bar .search-btn {
+  width: auto;
+  margin-top: 0;
+  padding: 11px 24px;
+  font-size: 15px;
+}
+
+/* Optional explicit blue search button if you use .search-btn */
+.search-btn {
+  background-color: #007bff;
+  background-image: none;
+  color: #fff;
+}
+.search-btn:hover {
+  background-color: #0056b3;
+  opacity: 1;
+}
+
+/* ------------------------------------------------------------------
+   SEARCH RESULTS DROPDOWN
+------------------------------------------------------------------ */
+.search-results {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 15px 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: #fff;
+  max-height: 180px;
+  overflow-y: auto;
+}
+
+.search-results li {
+  padding: 8px 12px;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+  font-size: 15px;
+  color: #333;
+}
+.search-results li:hover {
+  background: #f1f1f1;
+}
+
+/* Selected delete note */
+.delete-selected-note {
+  font-size: 15px;
+  margin: 8px 0 0 0;
+  color: #333;
+}
+
+/* ------------------------------------------------------------------
+   Category checkboxes
+------------------------------------------------------------------ */
+.category-checkboxes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px 32px;
+  margin-bottom: 16px;
+}
+
+.category-checkboxes label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+  cursor: pointer;
+  line-height: 1;
+  padding: 3px 8px 3px 3px;
+}
+
+.category-checkboxes input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #228be6;
+  cursor: pointer;
+  margin: 0;
+}
+
+/* ------------------------------------------------------------------
+   Responsive
+------------------------------------------------------------------ */
+@media (max-width: 768px) {
+  .registration-container {
+    padding: 12px;
+  }
+  .update-delete-section {
+    flex-direction: column;
+    gap: 0;
+  }
+  .half-box {
+    min-width: 90%;
+    margin-bottom: 18px;
+  }
+  .form-box {
+    padding: 16px 7px;
+  }
+  h1 {
+    font-size: 1.3rem;
+    padding-bottom: 7px;
+    margin-bottom: 18px;
+  }
+  .search-bar {
+    flex-direction: column;
+  }
+  .search-bar .submit-btn,
+  .search-bar .search-btn {
+    width: 100%;
+  }
 }

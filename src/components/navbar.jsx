@@ -1,21 +1,22 @@
+// src/components/Navbar.jsx
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import './Navbar.css';
 
 export default function Navbar() {
   return (
     <nav className="navbar">
       <div className="nav-logo">
-        <img src="/logo.jpg" alt="K Fitness Logo" className="logo-img" />
+        <img src={`${import.meta.env.BASE_URL}logo.jpg`} alt="Logo" className="logo-img" />
       </div>
 
       <ul className="nav-links">
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/active">Active Members</Link></li>
-        <li><Link to="/inactive">Inactive Members</Link></li>
-        <li><Link to="/ending">Ending Members</Link></li>
-        <li><Link to="/register">Registration</Link></li>
-        <li><Link to="/attendance">Attendance</Link></li>
+        <li><NavLink to="/" end>Home</NavLink></li>
+        <li><NavLink to="/active">Active Members</NavLink></li>
+        <li><NavLink to="/inactive">Inactive Members</NavLink></li>
+        <li><NavLink to="/ending">Ending Members</NavLink></li>
+        <li><NavLink to="/register">Registration</NavLink></li>
+        <li><NavLink to="/attendance">Attendance</NavLink></li>
       </ul>
     </nav>
   );

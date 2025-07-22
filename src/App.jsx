@@ -1,29 +1,40 @@
 // src/App.jsx
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
 import Navbar from './components/Navbar';
-import Footer from './components/Footer';
+import Footer from './components/Footer'; // Optional
+import Login from './Login';
+
+// Pages
 import Home from './pages/Home';
 import ActiveMembers from './pages/ActiveMembers';
 import InactiveMembers from './pages/InactiveMembers';
 import EndingMembers from './pages/EndingMembers';
 import Registration from './pages/Registration';
 import Attendance from './pages/Attendance';
-import Login from './Login';
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(() => {
+    return localStorage.getItem('kfitness_logged_in') === 'true';
+  });
 
+  // Show login page first
   if (!loggedIn) {
-    return <Login onLogin={() => setLoggedIn(true)} />;
+    return <Login onLogin={() => {
+      localStorage.setItem('kfitness_logged_in', 'true');
+      setLoggedIn(true);
+    }} />;
   }
 
   return (
-    <Router>
-      <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+    <BrowserRouter basename="/K-fitness">
+      <div>
+        {/* ✅ Top Navbar */}
         <Navbar />
 
-        <div style={{ flex: 1, padding: '20px' }}>
+        {/* ✅ Page container with white background */}
+        <div className="page-content">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/active" element={<ActiveMembers />} />
@@ -34,9 +45,10 @@ function App() {
           </Routes>
         </div>
 
+        {/* ✅ Optional: Persistent Footer */}
         <Footer />
       </div>
-    </Router>
+    </BrowserRouter>
   );
 }
 

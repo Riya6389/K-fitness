@@ -1,3 +1,4 @@
+/* Reset */
 * {
   margin: 0;
   padding: 0;
@@ -7,143 +8,128 @@
 body, html {
   height: 100%;
   font-family: 'Segoe UI', sans-serif;
-  overflow: auto;
+}
+
+/* 🔁 Zoom Background Animation */
+.login-background {
+  min-height: 100vh;
+  background: url('/img2.png') no-repeat center center/cover;
+  animation: bgZoom 10s infinite alternate;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
 }
 
-.background {
-  height: 100vh;
+@keyframes bgZoom {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.05); }
+}
+
+/* 🔲 Container for centering */
+.login-container {
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 40px;
+  border-radius: 14px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
   width: 100%;
-  background: url('./img2.png') no-repeat center center/cover;
-  animation: zoom 10s infinite alternate;
-}
-
-@keyframes zoom {
-  0% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(1.05);
-  }
-}
-
-.container {
-  display: flex;
-  height: 100vh;
-  width: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  color: white;
-}
-
-.left-section {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.left-section h1 {
-  font-size: 48px;
-  font-weight: bold;
-}
-
-.brand-name {
-  color: yellow;
-}
-
-.right-section {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  
-  background: rgba(255, 255, 255, 0.05);
-  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.3);
-}
-.brand-name {
-  color: yellow;
-  font-weight: bold;
-}
-
-.welcome-text {
-  color: white;
-}
-
-.motive-text {
-  color: #eee;
-  font-size: 16px;
-  margin-top: 10px;
-  line-height: 1.6;
   max-width: 400px;
+  animation: zoomPulse 6s ease-in-out infinite, fadeIn 1s forwards;
+  transform: scale(0.98);
 }
 
-
+/* 😎 Login Box */
 .login-box {
-  width: 320px;
+  background-color: rgba(255, 255, 255, 0.05);
   padding: 30px;
-  background: rgba(0, 0, 0, 0.6);
   border-radius: 12px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  border: 2px solid #ffdd00;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  color: #fff;
 }
 
+/* Heading */
 .login-title {
-  font-size: 28px;
-  margin-bottom: 20px;
-  position: relative;
   text-align: center;
-  font-weight: bold;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-}
-
-form label {
-  margin-bottom: 8px;
-  font-weight: bold;
-}
-
-form input {
-  padding: 12px;
+  font-size: 1.8rem;
   margin-bottom: 20px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  background-color: #333;
-  color: yellow;
-  font-size: 16px;
+  color: #ffdd00;
 }
 
-form input::placeholder {
+/* Fields */
+.login-box label {
+  font-weight: 500;
+  display: block;
+  color: #f1f1f1;
+  margin: 10px 0 5px;
+  font-size: 0.95rem;
+}
+
+.login-box input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background: #222;
+  color: #ffdd00;
+  margin-bottom: 16px;
+  font-size: 1rem;
+  transition: border 0.2s;
+}
+
+.login-box input:focus {
+  outline: none;
+  border-color: #ffdd00;
+  box-shadow: 0 0 4px #ffdd00aa;
+}
+
+.login-box input::placeholder {
   color: #aaa;
 }
 
-form button {
+/* Error */
+.login-error {
+  color: #ff4c4c;
+  text-align: center;
+  font-size: 0.9rem;
+  margin-bottom: 12px;
+}
+
+/* Submit Button */
+.login-btn {
+  width: 100%;
   padding: 12px;
-  background: linear-gradient(to right, #6a11cb, #f83600);
   border: none;
   border-radius: 8px;
-  color: white;
+  font-size: 1rem;
   font-weight: bold;
-  font-size: 16px;
   cursor: pointer;
-  transition: opacity 0.3s ease;
+  background: linear-gradient(to right, #6a11cb, #f83600);
+  color: white;
+  transition: 0.3s ease;
 }
 
-form button:hover {
+.login-btn:hover {
   opacity: 0.9;
+  transform: scale(1.04);
 }
 
+/* Animations 👇 */
+@keyframes zoomPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+  100% { transform: scale(1); }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(40px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* 🌐 Responsive */
 @media (max-width: 768px) {
-  .container {
-    flex-direction: column;
-  }
-
-  .left-section h1 {
-    font-size: 36px;
-  }
-
-  .login-box {
-    width: 90%;
+  .login-container {
+    padding: 20px;
+    max-width: 90%;
   }
 }
