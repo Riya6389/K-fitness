@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "homepage": "https://Riya6389.github.io/K-fitness/",
+  "homepage": "https://mks-dev.online",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
